@@ -1,0 +1,78 @@
+/* GTA VI trophy guide — original styling, no game artwork. Dark neon-on-slate look. */
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0 20px 32px;
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  background: #10131a; color: #e8eaf0; font-size: 15px; line-height: 1.45;
+}
+a { color: #7fd4ff; }
+.top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding: 10px 0 6px; border-bottom: 3px solid #ff2e88; }
+.top h1 { margin: 0; font-size: 30px; letter-spacing: .5px; color: #fff; }
+.top h1 span { color: #ff2e88; }
+.sub { margin: 6px 0 0; color: #b9becd; max-width: 640px; }
+.totals { display: flex; gap: 8px; flex: none; }
+.totals div { background: #1b2030; border: 1px solid #2c3448; border-radius: 8px; padding: 8px 10px; text-align: center; min-width: 56px; }
+.totals strong { display: block; font-size: 22px; color: #ffd166; }
+.totals span { font-size: 11px; color: #9aa1b5; text-transform: uppercase; letter-spacing: .4px; }
+.progress { margin: 10px 0 4px; }
+.progress-line { display: flex; justify-content: space-between; font-weight: 600; }
+#gradeText { color: #9aa1b5; font-weight: 400; }
+.bar { height: 12px; background: #232838; border-radius: 6px; margin-top: 6px; overflow: hidden; }
+.bar div { height: 100%; background: linear-gradient(90deg, #ff2e88, #ffd166); border-radius: 6px; transition: width .2s; }
+.tabs { display: flex; gap: 8px; margin: 10px 0; }
+.tabs button { background: #1b2030; color: #cfd4e2; border: 1px solid #2c3448; border-radius: 8px 8px 0 0; padding: 9px 18px; font-size: 15px; cursor: pointer; }
+.tabs button.active { background: #ff2e88; color: #fff; border-color: #ff2e88; font-weight: 700; }
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; background: #171b26; border: 1px solid #2c3448; border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; }
+.controls input[type="search"], .controls select { background: #0f1219; color: #e8eaf0; border: 1px solid #3a435c; border-radius: 6px; padding: 6px 8px; font-size: 14px; }
+.controls input[type="search"] { width: 210px; }
+.kinds { display: flex; flex-wrap: wrap; gap: 6px; }
+.kinds button { background: #232838; color: #cfd4e2; border: 1px solid #3a435c; border-radius: 20px; padding: 5px 12px; font-size: 13px; cursor: pointer; }
+.kinds button.active { background: #ffd166; color: #1a1405; border-color: #ffd166; font-weight: 700; }
+.controls button, .import { background: #232838; color: #e8eaf0; border: 1px solid #3a435c; border-radius: 6px; padding: 6px 10px; font-size: 13px; cursor: pointer; }
+.controls button:hover, .kinds button:hover { border-color: #ffd166; }
+.import input { display: none; }
+.check { font-size: 13px; color: #cfd4e2; display: flex; gap: 5px; align-items: center; cursor: pointer; }
+.hint { margin: 2px 0 10px; color: #9aa1b5; font-size: 13px; min-height: 18px; }
+.layout { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 16px; align-items: start; }
+.list { list-style: none; margin: 0; padding: 0; }
+.list li { display: grid; grid-template-columns: 30px 1fr auto; gap: 10px; background: #171b26; border: 1px solid #2c3448; border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; cursor: pointer; }
+.list li:hover { border-color: #ffd166; }
+.list li.selected { border-color: #ff2e88; box-shadow: 0 0 0 1px #ff2e88; }
+.list li.earned { opacity: .62; }
+.list li.earned .tname { text-decoration: line-through; }
+.list input { width: 20px; height: 20px; margin-top: 2px; accent-color: #ff2e88; cursor: pointer; }
+.tname { font-weight: 700; color: #fff; font-size: 15px; }
+.tdesc { color: #b9becd; font-size: 13.5px; }
+.tmeta { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+.chip { font-size: 11px; padding: 2px 8px; border-radius: 12px; background: #232838; color: #cfd4e2; border: 1px solid #3a435c; text-transform: uppercase; letter-spacing: .4px; }
+.chip.platinum { background: #2b6cb0; color: #fff; border-color: #2b6cb0; }
+.chip.gold { background: #b7791f; color: #fff; border-color: #b7791f; }
+.chip.silver { background: #718096; color: #fff; border-color: #718096; }
+.chip.bronze { background: #9c6b30; color: #fff; border-color: #9c6b30; }
+.chip.missable { background: #c53030; color: #fff; border-color: #c53030; font-weight: 700; }
+.chip.hidden { background: #4a2b5a; color: #e9d5ff; border-color: #4a2b5a; }
+.grade-big { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+.detail { position: sticky; top: 12px; background: #1b2030; border: 1px solid #ff2e88; border-radius: 12px; padding: 12px 16px; }
+.detail h2 { margin: 0 0 2px; font-size: 20px; color: #fff; }
+.detail .official { color: #b9becd; font-style: italic; margin: 0 0 8px; }
+.detail h3 { margin: 10px 0 3px; font-size: 13px; text-transform: uppercase; letter-spacing: .6px; color: #ffd166; }
+.detail p { margin: 0 0 8px; }
+.detail .guide { font-size: 14px; }
+.source { background: #10131a; border: 1px solid #2c3448; border-radius: 8px; padding: 8px 10px; font-size: 13px; word-break: break-word; }
+.warn { background: #3d1420; border: 1px solid #c53030; border-radius: 8px; padding: 8px 10px; font-size: 14px; }
+.roadmap h2 { font-size: 24px; margin: 4px 0 6px; color: #fff; }
+.roadmap .summary { color: #b9becd; max-width: 900px; }
+.step { background: #171b26; border: 1px solid #2c3448; border-left: 5px solid #ff2e88; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.step h3 { margin: 0 0 6px; color: #ffd166; font-size: 18px; }
+.step p { margin: 0 0 8px; max-width: 980px; }
+table.counts { border-collapse: collapse; width: 100%; margin: 10px 0; background: #171b26; }
+table.counts th, table.counts td { border: 1px solid #2c3448; padding: 7px 10px; text-align: left; font-size: 14px; }
+table.counts th { background: #232838; color: #ffd166; }
+.empty { background: #171b26; border: 1px dashed #3a435c; border-radius: 10px; padding: 22px; text-align: center; color: #b9becd; }
+footer { margin-top: 22px; border-top: 1px solid #2c3448; padding-top: 12px; color: #8b91a5; font-size: 13px; }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .detail { position: static; }
+  .top { flex-direction: column; }
+  .totals { flex-wrap: wrap; }
+}

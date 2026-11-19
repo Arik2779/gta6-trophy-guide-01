@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTA VI Trophy Guide &amp; Tracker — all 55 PS5 trophies</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>GTA VI Trophy Guide <span>&amp; Tracker</span></h1>
+    <p class="sub">All 55 PlayStation 5 trophies — official names, descriptions and grades, a cited guide for each, a roadmap to the platinum, and a tracker that saves in your browser. Works fully offline.</p>
+  </div>
+  <div class="totals" id="totals" aria-label="Trophy totals">
+    <div><strong>55</strong><span>trophies</span></div>
+    <div><strong>1</strong><span>platinum</span></div>
+    <div><strong>2</strong><span>gold</span></div>
+    <div><strong>6</strong><span>silver</span></div>
+    <div><strong>46</strong><span>bronze</span></div>
+    <div><strong>0</strong><span>online</span></div>
+  </div>
+</header>
+
+<section class="progress" aria-label="Progress">
+  <div class="progress-line"><span id="progressText">0 of 55 earned</span><span id="gradeText"></span></div>
+  <div class="bar"><div id="progressBar" style="width:0%"></div></div>
+</section>
+
+<nav class="tabs" aria-label="Views">
+  <button id="tabTracker" type="button" class="active" aria-current="page">Tracker</button>
+  <button id="tabRoadmap" type="button">Roadmap to Platinum</button>
+</nav>
+
+<main>
+<section id="trackerView">
+  <div class="controls">
+    <label class="search">Search <input id="search" type="search" placeholder="Trophy name, mission, place…" autocomplete="off"></label>
+    <div class="kinds" id="kindFilters" role="group" aria-label="Filter by kind">
+      <button type="button" data-kind="all" class="active">All</button>
+      <button type="button" data-kind="story">Story</button>
+      <button type="button" data-kind="missable">Missable</button>
+      <button type="button" data-kind="collectibles">Collectibles</button>
+      <button type="button" data-kind="activities">Activities</button>
+      <button type="button" data-kind="side">Side quests</button>
+      <button type="button" data-kind="online">Online</button>
+    </div>
+    <label>Grade <select id="gradeSelect">
+      <option value="all">All grades</option>
+      <option value="platinum">Platinum</option>
+      <option value="gold">Gold</option>
+      <option value="silver">Silver</option>
+      <option value="bronze">Bronze</option>
+    </select></label>
+    <label class="check"><input id="spoilerToggle" type="checkbox"> Hide story spoilers</label>
+    <label class="check"><input id="hideEarnedToggle" type="checkbox"> Hide earned</label>
+    <button id="exportBtn" type="button">Export progress</button>
+    <label class="import">Import progress <input id="importInput" type="file" accept="application/json,.json"></label>
+    <button id="resetBtn" type="button">Reset</button>
+  </div>
+  <p class="hint" id="listHint"></p>
+  <div class="layout">
+    <ul id="trophyList" class="list" aria-label="Trophy checklist"></ul>
+    <aside id="detail" class="detail" aria-label="Selected trophy guide" aria-live="polite"></aside>
+  </div>
+</section>
+
+<section id="roadmapView" hidden>
+  <div id="roadmapContent"></div>
+</section>
+</main>
+
+<footer>
+  <p>Official trophy names, descriptions and grades are shown as PlayStation publishes them. Guides are written for this entry in our own words and cite their sources beside each trophy. Sources: PowerPyx trophy guide &amp; roadmap and 100% checklist, GTABase trophy list, Sixshore trophy list. No Rockstar logo, artwork or game screenshot is used anywhere in this guide. Progress is stored only in this browser (localStorage) and can be exported to a file and imported back.</p>
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
